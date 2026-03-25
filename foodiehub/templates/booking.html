@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Book a Table</h2>
+
+<!-- 🔥 MESSAGE SECTION -->
+{% if error %}
+    <p style="color:red;">{{ error }}</p>
+{% endif %}
+
+{% if success %}
+    <p style="color:green;">{{ success }}</p>
+{% endif %}
+
+<!-- 📋 BOOKING FORM -->
+<form method="POST">
+    {% csrf_token %}
+    
+    <label>Select Table:</label>
+    <select name="table">
+        {% for t in tables %}
+            <option value="{{ t.id }}">
+                {{ t.restaurant.name }} - Table {{ t.number }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <br><br>
+
+    <label>Date:</label>
+    <input type="date" name="date">
+
+    <br><br>
+
+    <label>Time:</label>
+    <input type="time" name="time">
+
+    <br><br>
+
+    <button type="submit">Book Now</button>
+</form>
+
+{% endblock %}

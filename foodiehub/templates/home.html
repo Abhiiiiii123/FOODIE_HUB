@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 style="text-align:center;">🍽 Explore Restaurants</h2>
+
+<!-- 🔍 SEARCH BAR -->
+<form method="GET" style="text-align:center; margin-bottom:20px;">
+    <input type="text" name="q" placeholder="Search restaurant..." 
+           style="padding:8px; width:200px;">
+    <button type="submit" style="padding:8px;">Search</button>
+</form>
+
+<div style="display:flex; flex-wrap:wrap; justify-content:center;">
+
+{% for r in restaurants %}
+
+    <div style="
+        width:250px;
+        margin:15px;
+        padding:10px;
+        background:#1e293b;
+        border-radius:10px;
+        text-align:center;
+        transition:0.3s;
+    " onmouseover="this.style.transform='scale(1.05)'" 
+       onmouseout="this.style.transform='scale(1)'">
+
+        <!-- 🖼 IMAGE -->
+        {% if r.image %}
+            <img src="{{ r.image.url }}" width="100%" style="border-radius:10px;">
+        {% else %}
+            <p style="color:gray;">No Image</p>
+        {% endif %}
+
+        <h3>{{ r.name }}</h3>
+        <p>{{ r.location }}</p>
+
+        <a href="/booking/" style="
+            display:inline-block;
+            padding:8px 15px;
+            background:#38bdf8;
+            color:black;
+            border-radius:5px;
+            text-decoration:none;
+        ">
+            Book Now
+        </a>
+
+    </div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

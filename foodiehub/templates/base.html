@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FOODIE HUB</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #0f172a;
+            color: white;
+        }
+
+        nav {
+            background: #020617;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h2 {
+            color: #38bdf8;
+        }
+
+        .links a {
+            color: white;
+            margin: 0 12px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .links a:hover {
+            color: #38bdf8;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        input, select {
+            border-radius: 5px;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <h2>🍽 FOODIE HUB</h2>
+
+    <div class="links">
+        <a href="/">Home</a>
+        <a href="/booking/">Book Table</a>
+        <a href="/history/">My Bookings</a>
+
+        {% if user.is_authenticated %}
+            <a href="/logout/">Logout</a>
+        {% else %}
+            <a href="/login/">Login</a>
+        {% endif %}
+    </div>
+</nav>
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

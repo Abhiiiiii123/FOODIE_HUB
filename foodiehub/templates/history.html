@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>📜 My Bookings</h2>
+
+{% for b in bookings %}
+    <div style="border:1px solid white; margin:10px; padding:10px;">
+        <p><b>Restaurant:</b> {{ b.table.restaurant.name }}</p>
+        <p><b>Table:</b> {{ b.table.number }}</p>
+        <p><b>Date:</b> {{ b.date }}</p>
+        <p><b>Time:</b> {{ b.time }}</p>
+    </div>
+{% empty %}
+    <p>No bookings yet</p>
+{% endfor %}
+
+{% endblock %}
